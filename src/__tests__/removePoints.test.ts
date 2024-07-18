@@ -13,9 +13,7 @@ describe('remove points', () => {
     ],
   };
   it('Without losing points', async () => {
-    expect(
-      removePoints(data, { threshold: 0.99, maxRemovals: 4 }),
-    ).toStrictEqual([
+    expect(removePoints(data, { r2: 0.99, maxRemovals: 4 })).toStrictEqual([
       false,
       false,
       false,
@@ -38,9 +36,7 @@ describe('remove points', () => {
   });
 
   it('Remove one point', async () => {
-    expect(
-      removePoints(data, { threshold: 0.991, maxRemovals: 4 }),
-    ).toStrictEqual([
+    expect(removePoints(data, { r2: 0.991, maxRemovals: 4 })).toStrictEqual([
       false,
       true,
       false,
@@ -63,9 +59,7 @@ describe('remove points', () => {
   });
 
   it('Remove two point', async () => {
-    expect(
-      removePoints(data, { threshold: 0.996, maxRemovals: 4 }),
-    ).toStrictEqual([
+    expect(removePoints(data, { r2: 0.996, maxRemovals: 4 })).toStrictEqual([
       false,
       true,
       false,
@@ -88,9 +82,7 @@ describe('remove points', () => {
   });
 
   it('Remove three point', async () => {
-    expect(
-      removePoints(data, { threshold: 0.999, maxRemovals: 4 }),
-    ).toStrictEqual([
+    expect(removePoints(data, { r2: 0.999, maxRemovals: 4 })).toStrictEqual([
       false,
       true,
       false,
@@ -113,9 +105,7 @@ describe('remove points', () => {
   });
 
   it('Remove four point', async () => {
-    expect(
-      removePoints(data, { threshold: 0.9993, maxRemovals: 4 }),
-    ).toStrictEqual([
+    expect(removePoints(data, { r2: 0.9993, maxRemovals: 4 })).toStrictEqual([
       false,
       true,
       false,
@@ -138,9 +128,7 @@ describe('remove points', () => {
   });
 
   it('Remove five point', async () => {
-    expect(
-      removePoints(data, { threshold: 0.9996, maxRemovals: 5 }),
-    ).toStrictEqual([
+    expect(removePoints(data, { r2: 0.9996, maxRemovals: 5 })).toStrictEqual([
       false,
       true,
       false,
