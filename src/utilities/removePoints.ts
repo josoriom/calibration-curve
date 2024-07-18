@@ -3,19 +3,19 @@ import { xMaxValue } from 'ml-spectra-processing';
 
 export function removePoints(
   data: DataXY,
-  options: { threshold?: number; maxRemovals?: number } = {},
+  options: { r2?: number; maxRemovals?: number } = {},
 ) {
-  const { threshold = 0.999, maxRemovals = 4 } = options;
+  const { r2 = 0.999, maxRemovals = 4 } = options;
   const { x, y } = data;
   let removals = 0;
   const result = new Array(x.length).fill(false);
 
-  const r2 = calculateR2({ x, y });
-  let bestR2 = r2;
+  const initialR2 = calculateR2({ x, y });
+  let bestR2 = initialR2;
   let xx = x.slice();
   let yy = y.slice();
   while (removals < maxRemovals) {
-    if (bestR2 >= threshold) break;
+    if (bestR2 >= r2) break;
     let bestIndex = -1;
     const r2Array = [];
     let newX = [];
